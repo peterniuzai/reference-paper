@@ -1,0 +1,35 @@
+\documentclass{article}
+\title{Calculate the SNR after intergration} 
+\begin{document}
+\author{peter}
+
+\maketitle
+\section{Sigma changing}
+Assuming we have 2-D Gaussian Noise array, which we can create with Numpy:\\
+\\import numpy as np\\
+a = np.random.normal(loc = 0 , scale = 1 , size = (1024,1024))\\
+\\In array a, the standard deviation is 1, mean is zero. That means in each part of a , the mean and standard deviation should be same or close to it. like we have array b  = a[1:1000,1] , the $\sigma\approx$1,  mean $\approx$0.\\
+If we integration an array with shape (N,N) along one axis, the sigma will become:
+\begin{equation}
+\sigma_i= \sigma_2 \cdot \sqrt{N}
+\end{equation}
+
+like c = a.sum(axis = 0). Array c has shape of (1024,) Then the $\sigma$ of c is not 1 anymore, it should be 32.\\
+
+\section{Deduction}
+Definition of Standard Deviation:
+\begin{equation}
+\sigma = \sqrt{\frac{\Sigma_{i=1}^N(x_i-\bar{x})^2}{N-1}}
+\end{equation}
+For a 2-D array, 
+\begin{equation}
+\sigma_2= \sqrt{\frac{\Sigma_{i=1}^N\Sigma_{j=1}^N(x_{ij}-\bar{x})^2}{(N-1)\cdot(N-1)}}
+\end{equation}
+If we integration along one axis,$x_{ij}=\Sigma_{i=1}^N$,then the equation above will becomes:
+\begin{equation}
+\sigma_i= \sqrt{\frac{\Sigma_{j=1}^N(\Sigma_{i=1}^Nx_{j}-\bar{x})^2}{(N-1)}}
+\end{equation}
+As $\bar{x}$ should keep zero, the uper iterms under square root should keep the same , denominator under square root is the only change.
+Then we get equation (1).
+
+\end{document}

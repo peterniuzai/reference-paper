@@ -1,0 +1,14 @@
+\BOOKMARK [1][-]{section.1}{Data acquistion}{}% 1
+\BOOKMARK [1][-]{section.2}{Antenna control}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Find the pulsar position}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Ra ,dec inputs}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Antenna response}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Real time Camera of Antenna}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Data View and process by useful tools}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Band pass}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{ADC data view}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{De-disperse by sigproc}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{De-disperse plot}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Analysis}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Detection ability of this system}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{DM smearing}{section.4}% 14

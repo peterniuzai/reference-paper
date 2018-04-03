@@ -1,0 +1,71 @@
+\documentclass{article}
+\title{Note 2017 May 17}
+\author{Chenhui Niu}
+\begin{document}
+\maketitle
+\section{the relationship between DM and slope K}
+As we know the relationship of time delay and frequency is:
+\begin{equation}
+\Delta t = 4.15 \times 10 ^{-6}ms \cdot DM \times (f^{-2}_{ref} -f^{-2}_{chan})
+\end{equation}
+
+We usually use $C = 4.15 \times 10^{-6} ms \cdot MHz^2 \cdot pc^{-1} \cdot cm^3$.
+If we assume $k_{1}$ stand for the slope of original line, and denote $k_{2}$ be the slop of line after 2-D FFT, and $k_{3}$=$\cot( \theta)$= $\frac{1}{k_2}$, We could get:
+\begin{equation}
+\centering  k_1 \cdot unit(k_1) = \frac{f^{-2}_{chan}}{\Delta t} = \frac{1}{C\cdot DM} 
+\end{equation}
+Here $k_1,k_2,k_3$ are from geometry, they only stand the digital value of the slop.If we want using it to calculate the DM ,we should add a unit of them when calculate slope. The $unit(k_1)$in equation (2) is:
+\begin{equation}
+unit(k_1)= \frac{max(f^{-2})-min(f^{-2})}{N_{bins}} \cdot \frac{1}{t_{samp}} 
+\end{equation}
+
+
+If we have a original data shape like $[N_{chan},N_{tsamp}]$, then we do a Re-bin process on it to make FRB curve be a straight line. Let $N_{bins}$parameter equal $N_{chan}$ could get the highest SNR as last note talking about.Then the data shape is becoming $[N_{bins}, N_{samp}]$. Next step is proceed 2D-FFT on data, then the straight line will go cross the center of the map. However , the slops are not necessary perpendicular to each other between the two straight signal lines before and after 2-D FFT. only if the data shape is square , like $N_{bins}=N_{tsamp}$ , the perpendicular relationship($k_1\cdot k_2=-1$) is satisfied. \\
+
+When $N_{bins} \neq N_{tsamp}$, the two slopes $k_1,k_2$ are also obeyed one rule:
+\begin{equation}
+ k_1 =\frac{-1\cdot N_{bins}}{k_2 \cdot N_{tsamp}}
+\end{equation}That's derived from properties of 2-D FFT.
+\section{Using DM smearing to constrain $k_2$}
+
+Time delay defined in Formula (1) is from 2 continuous frequency channel. It's fine for coherent de-dispersion, However , for incoherent de-dispersion, we need to consider the time delay in one frequency bin.That not match will cause DM smearing. 
+
+\subsection{DM smearing}
+
+DM smearing is kind of a signal broaden caused by wrong decision of parameter. In incoherent de-dispersion, time sample interval $t_{samp}$ ,and bandwidth of each frequency channel dominate the resolution of each DM. If we take wrong DM step, signal in each frequency channel and time bin will be broadened which will bring a low SNR. That is not what we want.To get rid of this, we can calculate the time delay between each frequency channel by take derivation of formula (1) , then we get:
+\begin{equation}
+t_{DM}=8.3 \times 10^6ms \times DM \cdot \Delta f \cdot f^{-3}_{ref} 
+\end{equation}
+
+
+In (5) , $t_{DM}$ is the time delay between each frequency channel caused by specific DM value. If we don't want  $t_{DM}$ be the main factor of pulse width, $t_{DM}$ should satisfied:
+
+{\centering \[ t_{DM} \leq t_{samp} \]}
+Take equal of items above and combine equation (5),we could get  reasonable DM step :
+\begin{equation}
+DM_i = 1.205 \times 10^{-7} cm^{-3} pc (i-1) t_{samp}(f^3_{ref} / \Delta f)
+\end{equation}
+When $\Delta f $ reach maximum, all other situation will not have DM smearing.Then we can get:
+\begin{equation}
+\Delta DM=1.205 \times 10^{-7} cm^{-3} pc\cdot t_{samp}\cdot(f^3_{ref} / \Delta f)
+\end{equation}
+\subsection{Constrain $k_2$}
+From (2)(3)(4), we could get relationship between DM and $k_2$:
+\begin{equation}
+DM = \frac{-1}{C}  \cdot\frac{N_{tsamp}\cdot t_{samp}}{max(f^{-2})-min(f^{-2})}\cdot k_2
+\end{equation}
+where C is the $4.15 \times 10^{-6} ms \cdot {MHz}^2 \cdot pc^{-1} \cdot cm^3$; k2 is the geometric slope (without unit) of line in 2-D FFT map. This is deduct from $unit(k_1)$, we can find out, if we use $unit(k_2)$:
+
+{\centering \[unit(k_2)=\frac{[max(f^{-2})-min(f^{-2})]^{-1}}{T^{-1}} \]}
+We could also get equation (8).
+\pagebreak
+
+From (7)(8), We can constrain parameter $k_2$  :
+\begin{equation}
+\Delta k_2 = -1 \cdot \Delta DM \cdot C \cdot \frac{max(f^{-2})-min(f^{-2})}{N_{tsamp}\cdot t_{samp}}
+\end{equation}
+Using parameters of Tianlai project:
+
+{\center \[t_{samp} =1 ms, f_{ref}=750 MHz , BW = 100 MHz , N_{tsamp}=512\]}
+The $\Delta DM$ = 0.508 $cm^{-3}\cdot pc$, then we cold get :$\Delta k_2$= 0.00197
+\end{document}

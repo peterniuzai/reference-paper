@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\title{Crab project}
+\begin{document}
+
+\maketitle
+\section{Data acquistion}
+\section{Antenna control}
+\subsection{Find the pulsar position}
+
+\begin{enumerate}[step i]
+\item Find a pulsar you like from pulsar catalog:\\
+\url{http://www.atnf.csiro.au/people/pulsar/psrcat/}\\
+Some parameter to choose:
+JName: Pulsar has 2 kinds name: B and J
+p0 : period \\
+p1: derivation of period. As the period is chaning slightly.\\
+S400, S1400, S2000 : As a wide band signal, pulsar’s flux is different at different frequency bands. \\
+Name, DM , Ra, Dec.
+
+\item Find out the observer’s latitude and longitude from :
+http://www.geoastro.de/welcomeEnglish.htm
+As leuschner’s latitude is around 38 
+\item Then using following website to calculate the object’s altitude and azimuth for the place you stay.We can also calculate this from astropy.  \\
+\url{http://www.convertalot.com/celestial_horizon_co-ordinates_calculator.html}
+\end{enumerate}
+
+\subsection{Ra ,dec inputs}
+\subsection{Antenna response}
+\subsection{Real time Camera of Antenna}
+We can view the status of Antenna from browser :\\
+\url{http://leuschner.berkeley.edu:8080}
+\section{Data View and process by useful tools}
+Presto and sigproc(sigpyproc) are useful tools to view band pass data or de-dispersion.They are already installed on Crab server.
+\subsection{Band pass}
+
+\subsection{ADC data view}
+\subsection{De-disperse by sigproc}
+\subsection{De-disperse plot}
+\section{Analysis}
+\subsection{Detection ability of this system}
+Our Crab system has a temperature 150K.
+\subsection{DM smearing}
+\end{document}

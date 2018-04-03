@@ -1,0 +1,8 @@
+B0329+54-00db.fits  B0329+54-25db.fits	B1859+03-20db.fits  B1929+10-15db.fits	B2255+58-10db.fits  B2319+60-05db.fits	attenuated_pulsar.e35734905
+B0329+54-05db.fits  B1859+03-00db.fits	B1859+03-25db.fits  B1929+10-20db.fits	B2255+58-15db.fits  B2319+60-10db.fits	attenuated_pulsar.e35745443
+B0329+54-10db.fits  B1859+03-05db.fits	B1929+10-00db.fits  B1929+10-25db.fits	B2255+58-20db.fits  B2319+60-15db.fits	attenuated_pulsar.o35734905
+B0329+54-15db.fits  B1859+03-10db.fits	B1929+10-05db.fits  B2255+58-00db.fits	B2255+58-25db.fits  B2319+60-20db.fits	attenuated_pulsar.o35745443
+B0329+54-20db.fits  B1859+03-15db.fits	B1929+10-10db.fits  B2255+58-05db.fits	B2319+60-00db.fits  B2319+60-25db.fits	generate_attenuated.pbs
+
+
+scp chenhui@ca:/scratch2/p/pen/kiyo/attenuated_pulsars/B1929+10-00db.fits /home/nch/Desktop/
